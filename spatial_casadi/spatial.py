@@ -354,7 +354,9 @@ class Rotation:
         @return A quaternion vector.
         """
 
+        self._quat = self._quat/casadi.sqrt(self._quat.T@self._quat)
         if seq == "xyzw":
+              #quaternions requires normalization
             return self._quat
         elif seq == "wxyz":
             x = self._quat[0]
